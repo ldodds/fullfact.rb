@@ -12,11 +12,14 @@ methods for interacting with the API to grab a list of fact checks, search the A
 #supply token to authenticate
 api = FullFact::API.new(token: ...)
 
+first = true
+
 #optionally provide search term to restrict results
 #recommended: include a sleep (ms) parameter to be polite
 #block is called for each page until API doesn't return further results
 api.harvest(search: ..., sleep: 1) do |page|
   $stderr.puts "Found #{page.count} results" if first
+  first = false
 
   #walk through results
   page.results.each do |result|
