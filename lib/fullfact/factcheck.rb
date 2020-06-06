@@ -63,6 +63,15 @@ module FullFact
       Nokogiri::HTML.parse(body)
     end
 
+    #Extract all the links embedded in the article
+    def extract_links
+      links = []
+      parse_body.search("//a").each do |a|
+        links << a["href"]
+      end
+      links
+    end
+
     def resp_body
       if @body.nil?
         begin
