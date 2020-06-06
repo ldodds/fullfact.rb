@@ -28,6 +28,7 @@ api.harvest(search: ..., sleep: 1) do |page|
     #factcheck = api.fact_check(result["detail_url"])
 
     #do something with the data
+    #factcheck.parse_body will parse the HTML and return a Nokogiri Document
   end
 end
 ```
