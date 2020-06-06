@@ -29,6 +29,8 @@ api.harvest(search: ..., sleep: 1) do |page|
 
     #do something with the data
     #factcheck.parse_body will parse the HTML and return a Nokogiri Document
+    #if you just want the links in the article
+    #factcheck.extract_links
   end
 end
 ```
