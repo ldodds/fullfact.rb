@@ -25,8 +25,15 @@ module FullFact
     end
 
     #all pages
-    def harvest(sleep=0)
-      page = nil
+    def harvest(search: nil, sleep: 0)
+      page = fact_checks(search: search)
+      loop do
+        yield page if block_given?
+        break if page.last_page?
+        sleep(sleep)
+        response = RestClient::Request.execute( url: page.next_page, method: :get )
+        page = Page.new( page.next_page, response )
+      end
     end
 
   end

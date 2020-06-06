@@ -1,7 +1,6 @@
 $:.unshift File.join( File.dirname(__FILE__), "..", "lib")
 require "fullfact"
 require 'dotenv'
-require 'pp'
 
 Dotenv.load
 
